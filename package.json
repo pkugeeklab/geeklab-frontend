@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "jquery": "^3.2.1",
     "vue": "^2.2.2",
     "vue-router": "^2.2.0"
   },
@@ -35,7 +36,6 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.10.0",
     "friendly-errors-webpack-plugin": "^1.1.3",
