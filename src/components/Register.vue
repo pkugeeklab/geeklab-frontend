@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 export default {
   data() {
     return {
@@ -44,10 +43,13 @@ export default {
       if (!this.username) {
         return
       }
-      $.post('http://127.0.0.1:5000/register',
+      this.$.post('http://127.0.0.1:5000/register',
               {username: this.username, password: this.password},
               data => {
                 console.log(data)
+                if (data) {
+                  this.$router.push('Login')
+                }
               })
     }
   }
