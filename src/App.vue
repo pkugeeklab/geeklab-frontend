@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
+    <navigation></navigation>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import './styles/main.less'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    navigation: require('@/components/Navigation')
+  }
 }
 </script>
 
@@ -16,8 +20,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /*text-align: center;*/
+  /*color: #2c3e50;*/
+  /*margin-top: 60px;*/
 }
 </style>
