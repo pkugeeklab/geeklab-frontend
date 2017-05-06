@@ -54,9 +54,9 @@
       <a href="#" class="brand">Geeklab</a>
       <template>
         <a href="#">介绍</a>
-        <a href="#">预约</a>
+        <!-- <router-link to="/activity-apply">预约</router-link> -->
         <a href="#">反馈</a>
-        <a href="/file">内部入口</a>
+        <a href="http://geeklab.pku.edu.cn/file">内部入口</a>
       </template>
       <div class="dropdown pull-right" style="cursor: pointer;line-height: normal">
         <a href="#" style="padding-top: 6px;">
