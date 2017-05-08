@@ -1,4 +1,8 @@
 <style lang="less">
+h1 {
+  display: inline-block;
+  margin: 20px auto;
+}
 .new-profile-form {
     width: 520px;
     margin: 20px auto;
@@ -12,6 +16,7 @@
             display: inline-block;
             vertical-align: middle;
             width: 400px;
+            resize: none;
         }
         .text-span {
             display: inline-block;
@@ -32,48 +37,56 @@
 </style>
 
 <template>
-<div class="board">
+<div class="container-fluid">
   <h1>活动申请</h1>
   <form class="new-profile-form" @submit.prevent="submit">
     <label class="text-box">
         <span class="text-span">活动名称</span>
-        <input type="text" v-model="title">
+        <input type="text" class="form-control" v-model="title">
       </label>
     <label class="text-box">
         <span class="text-span">活动人数</span>
-        <input type="text" v-model="people">
+        <input type="text" class="form-control" v-model="people">
       </label>
     <label class="text-box">
         <span class="text-span">申请人姓名</span>
-        <input type="text" v-model="username">
+        <input type="text" class="form-control" v-model="username">
       </label>
     <label class="text-box">
         <span class="text-span">联系方式</span>
-        <input type="text" v-model="contact">
+        <input type="text" class="form-control" v-model="contact">
       </label>
     <label class="text-box">
         <span class="text-span">负责人姓名</span>
-        <input type="text" v-model="principal">
+        <input type="text" class="form-control" v-model="principal">
       </label>
     <label class="text-box">
         <span class="text-span">联系方式</span>
-        <input type="text" v-model="contactplus">
+        <input type="text" class="form-control" v-model="contactplus">
       </label>
     <label class="text-box">
-        <span class="text-span">开始时间</span>
-        <vue-datepicker :date="startTime" :option="option" :limit="limitStart"></vue-datepicker>
-      </label>
+      <span class="text-span">开始时间</span>
+      <vue-datepicker
+        :date="startTime"
+        :option="option"
+        :limit="limitStart">
+      </vue-datepicker>
+    </label>
     <label class="text-box">
-        <span class="text-span">结束时间</span>
-        <vue-datepicker :date="endTime" :option="option" :limit="limitEnd"></vue-datepicker>
-      </label>
+      <span class="text-span">结束时间</span>
+      <vue-datepicker
+        :date="endTime"
+        :option="option"
+        :limit="limitEnd">
+      </vue-datepicker>
+    </label>
     <div class="text-box">
       <span class="text-span" style="vertical-align: top; padding-top: 10px">活动内容</span>
-      <textarea rows="3" placeholder="活动内容" v-model="desc"></textarea>
+      <textarea rows="3" placeholder="活动内容" class="form-control" v-model="desc"></textarea>
     </div>
     <div class="text-box">
       <span class="text-span" style="vertical-align: top; padding-top: 10px">补充内容</span>
-      <textarea rows="3" placeholder="补充内容" v-model="additional"></textarea>
+      <textarea rows="3" placeholder="补充内容" class="form-control" v-model="additional"></textarea>
     </div>
     <div class="save-button text-right">
       <!-- <span style="color: #2b8;margin-right: 5px">修改成功</span> -->
@@ -111,9 +124,9 @@ export default {
         month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         format: 'YYYY-MM-DD-HH-mm',
         placeholder: '点击选取时间',
-        inputStyle: {
-          'display': 'inline-block'
-        },
+        inputClass: [
+          'form-control'
+        ],
         color: {
           header: '#233',
           headerText: '#f00'

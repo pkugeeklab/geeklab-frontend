@@ -1,31 +1,29 @@
 <style lang="less" scoped>
 .navbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 44px;
-  line-height: 44px;
-  z-index: 10;
   color: #777;
   background: #94070A;
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+  .switch {
+      background-color: #94070A;
+      &:hover {
+        background-color: #50070A;
+      }
+  }
   .container {
     a:hover {
       color:#fff;
     }
   }
   a {
-    display: inline-block;
     color: #aaa;
-    padding: 0 20px;
     font-size: 14px;
     &.v-link-active {
-      color: #fff;
+      color: #bb0;
     }
     &.brand {
       color: #fff;
-      padding: 0;
-      margin-right: 40px;
       font-size: 25px;
       font-weight: bold;
       vertical-align: middle;
@@ -49,26 +47,23 @@
 </style>
 
 <template>
-  <nav class="navbar-fixed pure-menu pure-menu-horizontal">
-    <div class="container">
-      <a href="#" class="brand">Geeklab</a>
-      <template>
-        <a href="#">介绍</a>
-        <!-- <router-link to="/activity-apply">预约</router-link> -->
-        <a href="#">反馈</a>
-        <a href="http://geeklab.pku.edu.cn/file">内部入口</a>
-      </template>
-      <div class="dropdown pull-right" style="cursor: pointer;line-height: normal">
-        <a href="#" style="padding-top: 6px;">
-          <img class="img-circle" width="30" src="../images/avatar.jpeg" alt="头像">
-        </a>
-        <ul class="dropdown-menu" style="margin: 0;line-height: 20px;">
-          <li><a href="#">账号设置</a></li>
-          <li><a href="#">退出</a></li>
-        </ul>
-      </div>
-      <div class="pull-right">
-        <a href="#">注册</a>
+  <nav class="navbar navbar-default navbar-fixed" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" @click="toggle" class="navbar-toggle switch">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    		<a class="navbar-brand brand" href="#">Geeklab</a>
+    	</div>
+      <div class="collapse navbar-collapse" :class="{in: expand}" aria-expanded="true">
+    		<ul class="nav navbar-nav">
+    			<li><a href="#">介绍</a></li>
+    			<li><router-link to="activity-apply">预约</router-link></li>
+          <li><a href="http://geeklab.pku.edu.cn/file">内部入口</a></li>
+    		</ul>
       </div>
     </div>
   </nav>
@@ -76,6 +71,21 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      expand: false
+    }
+  },
+  watch: {
+    $route() {
+      this.expand = false
+    }
+  },
+  methods: {
+    toggle() {
+      console.log('toggle')
+      this.expand = !this.expand
+    }
+  }
 }
 </script>

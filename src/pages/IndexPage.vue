@@ -26,15 +26,13 @@ footer {
 </style>
 
 <template>
-  <div class="board">
-    <div class="background">
-      <div class="content">
-        <p>极客实验室，让创新更有趣</p>
-        <p>找到同道伙伴，共启求知之旅</p>
-        <p><b>网站建设中，想要参与，请联系<a href="mailto:xlwyes@pku.edu.cn?subject=报名">xlwyes@pku.edu.cn</a></b></p>
-      </div>
-      <footer>图片来自 <a href="http://unsplash.com">unsplash.com</a></footer>
+  <div class="container background">
+    <div class="content">
+      <p>极客实验室，让创新更有趣</p>
+      <p>找到同道伙伴，共启求知之旅</p>
+      <p><b>网站建设中，想要参与，请联系<a href="mailto:xlwyes@pku.edu.cn?subject=报名">xlwyes@pku.edu.cn</a></b></p>
     </div>
+    <footer>图片来自 <a href="http://unsplash.com">unsplash.com</a></footer>
   </div>
 </template>
 
