@@ -140,7 +140,7 @@ table {
   color: #bbb;
 }
 .checked {
-  background: #F50057;
+  background: #3366CC;
   color: #FFF !important;
   border-radius: 3px;
 }
@@ -190,7 +190,7 @@ table {
   background: none;
 }
 .checked:hover {
-  background: #FF4F8E;
+  background: #3366CC;
 }
 .cov-date-next::before,
 .cov-date-previous::before {
@@ -251,7 +251,6 @@ table {
   padding: 0;
 }
 .cov-vue-date {
-  display: inline-block;
   color: #5D5D5D;
 }
 .button-box {
@@ -297,7 +296,7 @@ table {
 }
 .hour-box .active,
 .min-box .active {
-  background: #F50057;
+  background: #3366CC;
   color: #FFF !important;
 }
 ::-webkit-scrollbar {
@@ -396,16 +395,7 @@ export default {
           },
           wrapperClass: '',
           inputClass: '',
-          inputStyle: {
-            'display': 'inline-block',
-            'padding': '6px',
-            'line-height': '22px',
-            'font-size': '16px',
-            'border': '2px solid #fff',
-            'box-shadow': '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
-            'border-radius': '2px',
-            'color': '#5F5F5F'
-          },
+          inputStyle: {},
           placeholder: 'when?',
           buttons: {
             ok: 'OK',

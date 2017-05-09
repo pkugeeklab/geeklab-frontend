@@ -1,97 +1,96 @@
 <style lang="less">
-h1 {
-  display: inline-block;
-  margin: 20px auto;
+.form-header {
+  margin: 12px auto;
+  text-align: center;
 }
-.new-profile-form {
-    width: 520px;
-    margin: 20px auto;
-    .text-box {
-        display: block;
-        position: relative;
-        margin: 20px 0;
-        .avatarupload,
-        input,
-        textarea {
-            display: inline-block;
-            vertical-align: middle;
-            width: 400px;
-            resize: none;
-        }
-        .text-span {
-            display: inline-block;
-            vertical-align: middle;
-            text-align: right;
-            padding-right: 20px;
-            width: 100px;
-            font-size: 14px;
-        }
-    }
-    .save-button {
-        padding-right: 15px;
-    }
-    .error {
-        padding-left: 80px;
-    }
+@media (min-width: 769px) {
+  .form-body{
+    margin-left: -150px;
+  }
+}
+span {
+  // display: inline-block;
+}
+input {
+  // display: inline-block;
+  // background-color: #FFF;
+}
+textarea {
+  resize: none;
 }
 </style>
 
 <template>
 <div class="container-fluid">
-  <h1>活动申请</h1>
-  <form class="new-profile-form" @submit.prevent="submit">
-    <label class="text-box">
-        <span class="text-span">活动名称</span>
-        <input type="text" class="form-control" v-model="title">
-      </label>
-    <label class="text-box">
-        <span class="text-span">活动人数</span>
-        <input type="text" class="form-control" v-model="people">
-      </label>
-    <label class="text-box">
-        <span class="text-span">申请人姓名</span>
-        <input type="text" class="form-control" v-model="username">
-      </label>
-    <label class="text-box">
-        <span class="text-span">联系方式</span>
-        <input type="text" class="form-control" v-model="contact">
-      </label>
-    <label class="text-box">
-        <span class="text-span">负责人姓名</span>
-        <input type="text" class="form-control" v-model="principal">
-      </label>
-    <label class="text-box">
-        <span class="text-span">联系方式</span>
-        <input type="text" class="form-control" v-model="contactplus">
-      </label>
-    <label class="text-box">
-      <span class="text-span">开始时间</span>
-      <vue-datepicker
-        :date="startTime"
-        :option="option"
-        :limit="limitStart">
-      </vue-datepicker>
-    </label>
-    <label class="text-box">
-      <span class="text-span">结束时间</span>
-      <vue-datepicker
-        :date="endTime"
-        :option="option"
-        :limit="limitEnd">
-      </vue-datepicker>
-    </label>
-    <div class="text-box">
-      <span class="text-span" style="vertical-align: top; padding-top: 10px">活动内容</span>
-      <textarea rows="3" placeholder="活动内容" class="form-control" v-model="desc"></textarea>
+  <div class="row form-header">
+    <h1 class="col-md-12 col-sm-12">活动预约</h1>
+  </div>
+  <form class="form-horizontal form-body" @submit.prevent="submit">
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label" for="title">活动名称</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="title" id="title">
+      </div>
+      <label class="col-md-2 control-label" for="people">活动人数</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="people" id="people">
+      </div>
     </div>
-    <div class="text-box">
-      <span class="text-span" style="vertical-align: top; padding-top: 10px">补充内容</span>
-      <textarea rows="3" placeholder="补充内容" class="form-control" v-model="additional"></textarea>
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label" for="username">申请人姓名</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="username" id="username">
+      </div>
+      <label class="col-md-2 control-label" for="contact">联系方式</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="contact" id="contact">
+      </div>
     </div>
-    <div class="save-button text-right">
-      <!-- <span style="color: #2b8;margin-right: 5px">修改成功</span> -->
-      <button type="button" class="btn btn-default">下载</button>
-      <button type="submit" class="btn btn-primary">保存设置</button>
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label" for="principal">负责人姓名</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="principal" id="principal">
+      </div>
+      <label class="col-md-2 control-label" for="contactplus">联系方式</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" v-model="contactplus" id="contactplus">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label">开始时间</label>
+      <div class="col-md-2">
+        <vue-datepicker
+          :date="startTime"
+          :option="option"
+          :limit="limitStart">
+        </vue-datepicker>
+      </div>
+      <label class="col-md-2 control-label">结束时间</label>
+      <div class="col-md-2">
+        <vue-datepicker
+          :date="endTime"
+          :option="option"
+          :limit="limitEnd">
+        </vue-datepicker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label" for="desc">活动内容</label>
+      <div class="col-md-6">
+        <textarea rows="4" placeholder="活动内容" class="form-control" v-model="desc" id="desc"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 col-md-offset-2 control-label" for="additional">补充内容</label>
+      <div class="col-md-6">
+        <textarea rows="3" placeholder="补充内容" class="form-control" v-model="additional" id="additional"></textarea>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="pull-right">
+        <button type="button" class="btn btn-default">下载</button>
+        <button type="submit" class="btn btn-primary">保存设置</button>
+      </div>
     </div>
   </form>
 </div>
@@ -127,9 +126,10 @@ export default {
         inputClass: [
           'form-control'
         ],
+        inputStyle: {},
         color: {
-          header: '#233',
-          headerText: '#f00'
+          header: '#94070A',
+          headerText: '#DDD'
         },
         overlayOpacity: 0.5,
         dismissible: true

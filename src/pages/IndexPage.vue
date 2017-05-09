@@ -3,7 +3,7 @@
   position: fixed;
   min-height: 100%;
   min-width: 100%;
-  background: url("../images/background.jpg") no-repeat fixed top;
+  background: url("../images/background-fangkuan.jpg") no-repeat fixed top;
   background-size: cover;
   overflow: hidden;
 }
