@@ -8,15 +8,11 @@
     margin-left: -150px;
   }
 }
-span {
-  // display: inline-block;
-}
-input {
-  // display: inline-block;
-  // background-color: #FFF;
-}
 textarea {
   resize: none;
+}
+.error {
+  border-color: #F00;
 }
 </style>
 
@@ -29,31 +25,31 @@ textarea {
     <div class="form-group">
       <label class="col-md-2 col-md-offset-2 control-label" for="title">活动名称</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="title" id="title">
+        <input type="text" class="form-control" v-model="title" id="title" :class="{error: error.title}">
       </div>
       <label class="col-md-2 control-label" for="people">活动人数</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="people" id="people">
+        <input type="text" class="form-control" v-model="people" id="people" :class="{error: error.people}">
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-2 col-md-offset-2 control-label" for="username">申请人姓名</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="username" id="username">
+        <input type="text" class="form-control" v-model="username" id="username" :class="{error: error.username}">
       </div>
       <label class="col-md-2 control-label" for="contact">联系方式</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="contact" id="contact">
+        <input type="text" class="form-control" v-model="contact" id="contact" :class="{error: error.contact}">
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-2 col-md-offset-2 control-label" for="principal">负责人姓名</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="principal" id="principal">
+        <input type="text" class="form-control" v-model="principal" id="principal" :class="{error: error.principal}">
       </div>
       <label class="col-md-2 control-label" for="contactplus">联系方式</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="contactplus" id="contactplus">
+        <input type="text" class="form-control" v-model="contactplus" id="contactplus" :class="{error: error.contactplus}">
       </div>
     </div>
     <div class="form-group">
@@ -77,13 +73,13 @@ textarea {
     <div class="form-group">
       <label class="col-md-2 col-md-offset-2 control-label" for="desc">活动内容</label>
       <div class="col-md-6">
-        <textarea rows="4" placeholder="活动内容" class="form-control" v-model="desc" id="desc"></textarea>
+        <textarea rows="4" placeholder="活动内容" class="form-control" v-model="desc" id="desc" :class="{error: error.desc}"></textarea>
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-2 col-md-offset-2 control-label" for="additional">补充内容</label>
       <div class="col-md-6">
-        <textarea rows="3" placeholder="补充内容" class="form-control" v-model="additional" id="additional"></textarea>
+        <textarea rows="3" placeholder="补充内容" class="form-control" v-model="additional" id="additional" :class="{error: error.additional}"></textarea>
       </div>
     </div>
     <div class="col-md-10">
@@ -142,7 +138,8 @@ export default {
       limitEnd: [{
         type: 'fromto',
         from: moment()
-      }]
+      }],
+      error: {}
     }
   },
   components: {
@@ -151,13 +148,24 @@ export default {
   watch: {
     startTime: {
       handler: function(val) {
-        this.limitEnd[0].from = moment(val.time, 'YYYY-MM-DD HH:mm')
+        console.log(moment(val.time, 'YYYY-MM-DD HH:mm').add(-1, 'D'))
+        this.limitEnd[0].from = moment(val.time, 'YYYY-MM-DD HH:mm').add(-1, 'd')
       },
       deep: true
     },
     endTime: {
       handler: function(val) {
-        this.limitStart[0].to = moment(val.time, 'YYYY-MM-DD HH:mm')
+        this.limitStart[0].to = moment(val.time, 'YYYY-MM-DD HH:mm').add(1, 'd')
+      },
+      deep: true
+    },
+    error: {
+      handler: function(val) {
+        if (val.starttime || val.endtime) {
+          this.option.inputStyle = { 'border-color': '#F00' }
+        } else {
+          this.option.inputStyle = {}
+        }
       },
       deep: true
     }
@@ -184,16 +192,15 @@ export default {
           console.log(data)
           data = JSON.parse(data)
           if (data.ok) {
-            console.log('ok')
             this.$router.push({
               path: '/activity-apply-download',
               query: {
-                uri: data.ok
+                pdfid: data.ok.pdfid
               }
             })
           } else if (data.error) {
-            console.log('error')
             // solve error
+            this.error = data.error
           }
         })
     }

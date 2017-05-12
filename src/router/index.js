@@ -35,6 +35,11 @@ export default new Router({
     component: resolve => require(['@/pages/ActivityApplyDownload'], resolve)
   },
   {
+    path: '/apply-query',
+    name: 'ApplyQuery',
+    component: resolve => require(['@/pages/ApplyQuery'], resolve)
+  },
+  {
     path: '/messageboard',
     name: 'MessageBoard',
     component: resolve => require(['@/pages/MessageBoard'], resolve)

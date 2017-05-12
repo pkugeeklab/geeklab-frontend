@@ -36,6 +36,7 @@
     <vue-dropdown text="预约" slot="right">
       <li><router-link to="activity-apply">预约活动</router-link></li>
       <li><router-link to="">预约设备</router-link></li>
+      <li><router-link to="apply-query">查询预约</router-link></li>
     </vue-dropdown>
     <li slot="right">
       <a href="http://geeklab.pku.edu.cn/file" target="_blank">内部入口</a>
