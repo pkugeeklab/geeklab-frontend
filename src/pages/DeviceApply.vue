@@ -19,7 +19,7 @@ textarea {
 <template>
 <div class="container-fluid">
   <div class="row form-header">
-    <h1 class="col-md-12 col-sm-12">活动预约</h1>
+    <h1 class="col-md-12 col-sm-12">设备预约</h1>
   </div>
   <form class="form-horizontal form-body" @submit.prevent="submit">
     <div class="form-group">
@@ -33,23 +33,23 @@ textarea {
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-2 col-md-offset-2 control-label" for="username">负责人姓名</label>
+      <label class="col-md-2 col-md-offset-2 control-label" for="username">申请人姓名</label>
       <div class="col-md-2">
         <input type="text" class="form-control" v-model="username" id="username" :class="{error: error.username}">
       </div>
-      <label class="col-md-2 control-label" for="contact">所在院系</label>
+      <label class="col-md-2 control-label" for="contact">联系方式</label>
       <div class="col-md-2">
         <input type="text" class="form-control" v-model="contact" id="contact" :class="{error: error.contact}">
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-2 col-md-offset-2 control-label" for="username">电子邮箱</label>
+      <label class="col-md-2 col-md-offset-2 control-label" for="principal">负责人姓名</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="username" id="username" :class="{error: error.username}">
+        <input type="text" class="form-control" v-model="principal" id="principal" :class="{error: error.principal}">
       </div>
-      <label class="col-md-2 control-label" for="contact">手机号码</label>
+      <label class="col-md-2 control-label" for="contactplus">联系方式</label>
       <div class="col-md-2">
-        <input type="text" class="form-control" v-model="contact" id="contact" :class="{error: error.contact}">
+        <input type="text" class="form-control" v-model="contactplus" id="contactplus" :class="{error: error.contactplus}">
       </div>
     </div>
     <div class="form-group">
@@ -193,7 +193,7 @@ export default {
           data = JSON.parse(data)
           if (data.ok) {
             this.$router.push({
-              path: '/apply-download',
+              path: '/activity-apply-download',
               query: {
                 pdfid: data.ok.pdfid
               }

@@ -25,14 +25,34 @@ export default new Router({
     component: resolve => require(['@/pages/Login'], resolve)
   },
   {
+    path: '/blog-list',
+    name: 'BlogList',
+    component: resolve => require(['@/pages/BlogList'], resolve)
+  },
+  {
+    path: '/blog-editor',
+    name: 'BlogEditor',
+    component: resolve => require(['@/pages/BlogEditor'], resolve)
+  },
+  {
+    path: '/blog/:id',
+    name: 'Blog',
+    component: resolve => require(['@/pages/BlogPage'], resolve)
+  },
+  {
     path: '/activity-apply',
     name: 'ActivityApply',
     component: resolve => require(['@/pages/ActivityApply'], resolve)
   },
   {
-    path: '/activity-apply-download',
+    path: '/device-apply',
+    name: 'DeviceApply',
+    component: resolve => require(['@/pages/DeviceApply'], resolve)
+  },
+  {
+    path: '/apply-download',
     name: 'ActivityApplyDownload',
-    component: resolve => require(['@/pages/ActivityApplyDownload'], resolve)
+    component: resolve => require(['@/pages/ApplyDownload'], resolve)
   },
   {
     path: '/apply-query',

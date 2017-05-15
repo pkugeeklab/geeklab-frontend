@@ -4,6 +4,7 @@
   border-radius: 0;
   border: 0;
   margin: 0;
+  z-index: 10000;
   a {
     color: #fff !important;
     font-size: 14px;
@@ -31,11 +32,11 @@
   <vue-nav placement="top" class="navbar-fixed">
     <a slot="brand" href="#" class="navbar-brand brand">Geeklab</a>
     <li slot="right">
-      <a href="#">介绍</a>
+      <router-link to="blog-list">文章</router-link>
     </li>
     <vue-dropdown text="预约" slot="right">
       <li><router-link to="activity-apply">预约活动</router-link></li>
-      <li><router-link to="">预约设备</router-link></li>
+      <li><router-link to="device-apply">预约设备</router-link></li>
       <li><router-link to="apply-query">查询预约</router-link></li>
     </vue-dropdown>
     <li slot="right">
